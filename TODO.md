@@ -5,3 +5,11 @@ On veut:
 - Améliorer la déduction logique (résoudre rapidement des énigmes)
 - Améliorer faire des liens/regrouper (rassembler les éléments qui vont ensemble)
 - Améliorer le travail en parralèle (va et vient entre différents énigmes)
+
+Je veux:
+
+- M'engager d'avantage dans mes dossiers
+- Continuer ma routine de pratique
+- Créer l'application de pratique
+- Créer mes énigmes
+- Continuer à résoudre des PH et énigmes seul
