@@ -13,3 +13,5 @@ Je veux:
 - Créer l'application de pratique
 - Créer mes énigmes
 - Continuer à résoudre des PH et énigmes seul
+
+Design: https://www.plantuml.com/plantuml/uml/SoWkIImgAStDuGA2v9p4uc85vyIY58LgBgvQP07d_BoInCoyr2AWZ08GWCIYOnMIWLGnI2Mg6brTEx0ABYw7rBmKeEa0
