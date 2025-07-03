@@ -3,7 +3,7 @@ import { ErChampData } from './er-champ-data/er-champ-data';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'erchampdata',
     component: ErChampData,
   },
 ];
