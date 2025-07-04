@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/er-training",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -103,6 +104,9 @@
               "node_modules/nouislider/dist/nouislider.css"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

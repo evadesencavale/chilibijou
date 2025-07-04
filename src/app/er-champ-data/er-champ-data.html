@@ -3,6 +3,8 @@
   <p>Selected: {{ customSegmentValues[0] }} - {{ customSegmentValues[1] }}</p>
 </div>
 
+<input [formControl]="filterControl" placeholder="Filter teams..." />
+
 <table style="border: 1px solid">
   <thead>
     <tr>
@@ -22,10 +24,10 @@
         Custom ({{ customSegmentValues[0] }}% to {{ customSegmentValues[1] }}%)
       </th>
       @for (progress of milestones; track $index) {
-      <th colspan="3">{{ progress }}%</th>
+      <th colspan="4">{{ progress }}%</th>
       }
       <th rowspan="2" (click)="sortTeams('completionTime')">
-        Completion time
+        Completion Time
         <span *ngIf="sortField === 'completionTime'">
           {{ sortDirection === "asc" ? "▲" : "▼" }}
         </span>
@@ -45,7 +47,7 @@
     </th>
     @for (progress of milestones; track $index) {
     <th (click)="sortTeams('segmentTime', progress)">
-      ST
+      Segment Time
       <span *ngIf="sortField === 'segmentTime' && sortMilestone === progress">
         {{ sortDirection === "asc" ? "▲" : "▼" }}
       </span>
@@ -56,8 +58,14 @@
         {{ sortDirection === "asc" ? "▲" : "▼" }}
       </span>
     </th>
+    <th (click)="sortTeams('behind10th', progress)">
+      Behind 10th
+      <span *ngIf="sortField === 'behind10th' && sortMilestone === progress">
+        {{ sortDirection === "asc" ? "▲" : "▼" }}
+      </span>
+    </th>
     <th (click)="sortTeams('segmentPosition', progress)">
-      POS
+      Segment Position
       <span
         *ngIf="sortField === 'segmentPosition' && sortMilestone === progress"
       >
@@ -66,7 +74,7 @@
     </th>
     }
   </thead>
-  @for (team of teams; track team.getTeamName()) {
+  @for (team of filteredTeams(); track team.getTeamName()) {
   <tr>
     <td>{{ team.getFinalPosition() }}</td>
     <td>{{ team.getTeamName() }}</td>
@@ -75,6 +83,7 @@
     @for (progress of milestones; track $index) {
     <th>{{ secondsToHMS(team.getSegment(progress)) }}</th>
     <th>{{ secondsToHMS(team.getProgression(progress)) }}</th>
+    <th>{{ secondsToHMS(team.getBehind10thPlace(progress)) }}</th>
     <th>{{ team.getPosition(progress) }}</th>
     }
     <td>{{ team.getCompletionTime() }}</td>

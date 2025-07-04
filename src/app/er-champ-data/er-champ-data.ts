@@ -1,21 +1,50 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TeamData } from './er-champ-data-model';
 import { secondsToHMS } from '../../shared/utils';
 import { CommonModule } from '@angular/common';
 import * as noUiSlider from 'nouislider';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-er-champ-data',
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, ReactiveFormsModule],
   templateUrl: './er-champ-data.html',
   styleUrl: './er-champ-data.scss',
 })
-export class ErChampData implements AfterViewInit {
+export class ErChampData implements AfterViewInit, OnInit {
   teams: TeamData[] = [];
   milestones: number[] = [];
+  behind10th = new Map<number, number>();
   customSegmentTime = new Map<string, number>();
   customSegmentPosition = new Map<string, number>();
+
+  filterText: string | null = '';
+  filterControl = new FormControl('');
+
+  ngOnInit() {
+    this.filterControl.valueChanges.subscribe((value) => {
+      this.filterText = value;
+    });
+  }
+
+  filteredTeams() {
+    if (!this.filterText) {
+      return this.teams;
+    }
+
+    // split the filter string on semicolon, trim spaces
+    const filters = this.filterText
+      .split(';')
+      .map((f) => f.trim().toLowerCase())
+      .filter((f) => f.length > 0); // ignore empty filters
+
+    return this.teams.filter((team) => {
+      const teamName = team.getTeamName().toLowerCase();
+      // check if ANY of the filters match
+      return filters.some((filter) => teamName.includes(filter));
+    });
+  }
 
   sortField: string = 'position';
   sortDirection: 'asc' | 'desc' = 'asc';
@@ -81,6 +110,7 @@ export class ErChampData implements AfterViewInit {
         this.loadProgression(data);
         this.milestones.sort((a, b) => a - b);
         this.fillMissingTeamProgression();
+        this.calculateBehind10th();
 
         this.teams = this.teams.filter(
           (t) => t.getFinalPosition() != null && t.getFinalPosition() != 0
@@ -262,6 +292,11 @@ export class ErChampData implements AfterViewInit {
               (this.customSegmentPosition.get(b.getTeamName()) ?? 0);
           }
           break;
+        case 'behind10th':
+          comparisonValue =
+            (a.getBehind10thPlace(this.sortMilestone) || 0) -
+            (b.getBehind10thPlace(this.sortMilestone) || 0);
+          break;
         case 'completionTime':
           comparisonValue = (a.getCompletionTime() ?? '').localeCompare(
             b.getCompletionTime() || ''
@@ -297,6 +332,44 @@ export class ErChampData implements AfterViewInit {
         team.getTeamName(),
         Array.from(orderedByValue.keys()).indexOf(team.getTeamName()) + 1
       );
+    }
+  }
+
+  calculateBehind10th() {
+    for (const milestone of this.milestones) {
+      for (const team of this.teams) {
+        if (team.getPosition(milestone) === 10) {
+          if (
+            !this.behind10th.has(milestone) ||
+            this.behind10th.get(milestone)! > team.getProgression(milestone)!
+          ) {
+            this.behind10th.set(milestone, team.getProgression(milestone)!);
+          }
+        }
+      }
+    }
+
+    for (const milestone of this.milestones) {
+      if (!this.behind10th.has(milestone)) {
+        for (const team of this.teams) {
+          if (team.getPosition(milestone) === 9) {
+            if (
+              !this.behind10th.has(milestone) ||
+              this.behind10th.get(milestone)! > team.getProgression(milestone)!
+            ) {
+              this.behind10th.set(milestone, team.getProgression(milestone)!);
+            }
+          }
+        }
+      }
+    }
+
+    for (const milestone of this.milestones) {
+      for (const team of this.teams) {
+        const diff =
+          team.getProgression(milestone)! - this.behind10th.get(milestone)!;
+        team.setBehind10thPlace(milestone, diff > 0 ? diff : 0);
+      }
     }
   }
 

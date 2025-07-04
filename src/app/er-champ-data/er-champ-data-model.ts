@@ -4,8 +4,6 @@ export class TeamData {
   private segments = new Map<number, number>().set(0, 0);
   private positions = new Map<number, number>().set(0, 0);
 
-  private segmentPositions = new Map<number, number>().set(0, 0);
-  private behind1stPlace = new Map<number, number>().set(0, 0);
   private behind10thPlace = new Map<number, number>().set(0, 0);
 
   private completionTime: string | null = null;
@@ -29,22 +27,6 @@ export class TeamData {
 
   public getPosition(percent: number): number | null {
     return this.positions.get(percent) ?? null;
-  }
-
-  public getSegmentPosition(percent: number): number | null {
-    return this.segmentPositions.get(percent) ?? null;
-  }
-
-  public setSegmentPosition(percent: number, time: number): void {
-    this.segmentPositions.set(percent, time);
-  }
-
-  public getBehind1stPlace(percent: number): number | null {
-    return this.behind1stPlace.get(percent) ?? null;
-  }
-
-  public setBehind1stPlace(percent: number, time: number): void {
-    this.behind1stPlace.set(percent, time);
   }
 
   public getBehind10thPlace(percent: number): number | null {
