@@ -1,1 +1,4 @@
-<router-outlet />
+<router-outlet /> @for (premise of question.premises; track $index) {
+<div [innerHtml]="premise"></div>
+}
+<div [innerHtml]="question.conclusion"></div>
