@@ -1,0 +1,71 @@
+.memory-container {
+  font-size: 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+  gap: 2rem; /* space between children */
+  background-color: #c5f0f7 !important; /* light red */
+  transition: background-color 0.3s;
+}
+
+.memory-container > div {
+  margin-bottom: 1rem;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.button-row button {
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem;
+  min-width: 120px;
+  border-radius: 0.5rem;
+}
+
+.result-correct {
+  background-color: #c8f7c5 !important; /* light green */
+  transition: background-color 0.3s;
+}
+
+.result-incorrect {
+  background-color: #f7c5c5 !important; /* light red */
+  transition: background-color 0.3s;
+}
+
+.score {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2rem;
+  z-index: 10;
+}
+
+.settings-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.settings-panel {
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  z-index: 20;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

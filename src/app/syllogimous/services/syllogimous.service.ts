@@ -58,7 +58,10 @@ export class SyllogimousService {
 
     for (let i = 0; i < ORDERED_QUESTION_TYPES.length; i++) {
       const questionType = ORDERED_QUESTION_TYPES[i];
-      const isActive = true;
+      const isActive =
+        questionType != EnumQuestionType.Analogy &&
+        questionType != EnumQuestionType.Syllogism &&
+        questionType != EnumQuestionType.Binary;
       const numOfPremises = 2;
       settings.setQuestionSettings(questionType, isActive, numOfPremises);
     }
