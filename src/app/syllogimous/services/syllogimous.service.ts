@@ -67,7 +67,7 @@ export class SyllogimousService {
     }
 
     settings.setEnable('negation', true);
-    settings.setEnable('meta', true);
+    settings.setEnable('meta', false);
 
     return settings;
   }

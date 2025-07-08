@@ -38,34 +38,3 @@
   background-color: #f7c5c5 !important; /* light red */
   transition: background-color 0.3s;
 }
-
-.score {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-size: 2rem;
-  z-index: 10;
-}
-
-.settings-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.settings-panel {
-  position: absolute;
-  top: 3rem;
-  right: 1rem;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  z-index: 20;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}

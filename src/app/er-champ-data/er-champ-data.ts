@@ -8,6 +8,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-er-champ-data',
+  standalone: true,
   imports: [HttpClientModule, CommonModule, ReactiveFormsModule],
   templateUrl: './er-champ-data.html',
   styleUrl: './er-champ-data.scss',

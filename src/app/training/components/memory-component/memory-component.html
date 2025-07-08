@@ -1,0 +1,11 @@
+<div class="score">{{ rightAnswers + " / " + questions.length }}</div>
+@if(isReadyForNextQuestion){
+<button class="nextQuestion" (click)="nextQuestion()">Next Question</button>
+}
+<app-memory-settings-component></app-memory-settings-component>
+@if(question){
+<app-memory-question-component
+  [question]="question"
+  (questionAnswered)="onQuestionAnswered($event)"
+/>
+}
