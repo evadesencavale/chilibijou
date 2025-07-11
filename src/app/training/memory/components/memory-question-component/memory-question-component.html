@@ -1,0 +1,27 @@
+<div
+  class="memory-container"
+  [class.result-correct]="isResultCorrect"
+  [class.result-incorrect]="isResultIncorrect"
+>
+  @if(!displayResult){
+  <div>{{ currentQuestionType }}</div>
+  <div [innerHtml]="currentInstruction"></div>
+  } @if(!displayFillTheBlank && !displayConclusion && !displayResult) {
+  <div [innerHtml]="currentPremise"></div>
+  } @if(displayFillTheBlank && !displayConclusion && !displayResult) {
+  <div>
+    <app-memory-nback-component
+      [question]="question"
+      (nBackAnswered)="onNBackAnswered($event)"
+    ></app-memory-nback-component>
+  </div>
+  } @if(displayConclusion && !displayFillTheBlank && !displayResult) {
+  <div [innerHtml]="currentConclusion"></div>
+  <div class="button-row">
+    <button (click)="validateConclusion(true)">TRUE</button>
+    <button (click)="validateConclusion(false)">FALSE</button>
+  </div>
+  } @if(displayResult) {
+  <div>{{ currentResult ? "Great Success!" : "Shame & Regrets" }}</div>
+  }
+</div>

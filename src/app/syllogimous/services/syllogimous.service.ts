@@ -20,7 +20,6 @@ import {
 import { Logger } from '../utils/logger';
 import {
   pickUniqueItems,
-  coinFlip,
   getRandomRuleValid,
   getRandomRuleInvalid,
   getRandomSymbols,
@@ -39,6 +38,7 @@ import {
   fixBinaryInstructions,
 } from '../utils/question.utils';
 import { guid } from '../utils/uuid';
+import { coinFlip } from '../../utils/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -58,13 +58,18 @@ export class SyllogimousService {
 
     for (let i = 0; i < ORDERED_QUESTION_TYPES.length; i++) {
       const questionType = ORDERED_QUESTION_TYPES[i];
-      const isActive = true;
+      const isActive =
+        questionType != EnumQuestionType.Analogy &&
+        questionType != EnumQuestionType.Syllogism &&
+        questionType != EnumQuestionType.Binary &&
+        questionType != EnumQuestionType.Direction3DSpatial &&
+        questionType != EnumQuestionType.Direction3DTemporal;
       const numOfPremises = 2;
       settings.setQuestionSettings(questionType, isActive, numOfPremises);
     }
 
     settings.setEnable('negation', true);
-    settings.setEnable('meta', true);
+    settings.setEnable('meta', false);
 
     return settings;
   }

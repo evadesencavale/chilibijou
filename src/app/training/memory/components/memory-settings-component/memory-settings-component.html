@@ -1,0 +1,30 @@
+<div class="settings-btn" (click)="showSettings = !showSettings">⚙️</div>
+@if(showSettings){
+<div class="settings-panel">
+  <div>
+    <label>
+      Timer Interval (s):
+      <input
+        type="number"
+        [(ngModel)]="memorySettings.premiseDisplayTime"
+        (ngModelChange)="setPremiseDisplayTime($event)"
+        min="1"
+        step="1"
+      />
+    </label>
+  </div>
+  <div>
+    <label>
+      Premises count:
+      <input
+        type="number"
+        [(ngModel)]="memorySettings.premisesCount"
+        (ngModelChange)="setPremisesCount($event)"
+        min="3"
+        step="1"
+      />
+    </label>
+  </div>
+  <button (click)="showSettings = false">Close</button>
+</div>
+}
