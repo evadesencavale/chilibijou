@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Question } from '../../../syllogimous/models/question.models';
-import { SyllogimousService } from '../../../syllogimous/services/syllogimous.service';
 import { FormsModule } from '@angular/forms';
 import { MemorySettingsComponent } from '../memory-settings-component/memory-settings-component';
 import { MemorySettingsService } from '../../services/memory-settings.service';
 import { MemoryQuestionComponent } from '../memory-question-component/memory-question-component';
+import { Question } from '../../../../syllogimous/models/question.models';
+import { SyllogimousService } from '../../../../syllogimous/services/syllogimous.service';
 
 @Component({
   selector: 'app-memory-component',
@@ -24,22 +24,32 @@ export class MemoryComponent {
     private memorySettingsService: MemorySettingsService
   ) {}
 
+  get totalAnswers(): number {
+    if (this.questions.length === 0) return 0;
+    return (
+      this.questions.length +
+      this.questions.map((q) => q.premises.length).reduce((sum, p) => sum + p)
+    );
+  }
+
   get isReadyForNextQuestion() {
     return !this.question || this.readyForNextQuestion;
   }
 
   generateQuestion() {
+    const premiseCount = this.memorySettingsService.getSettings().premisesCount;
     const question = this.syllogimousService.createRandomQuestion(
-      this.memorySettingsService.getSettings().premisesCount,
+      premiseCount,
       true
     );
 
     this.questions.push(question);
+
     return question;
   }
 
-  onQuestionAnswered(validAnswer: boolean) {
-    if (validAnswer) this.rightAnswers++;
+  onQuestionAnswered(validAnswers: number) {
+    this.rightAnswers += validAnswers;
     this.readyForNextQuestion = true;
   }
 

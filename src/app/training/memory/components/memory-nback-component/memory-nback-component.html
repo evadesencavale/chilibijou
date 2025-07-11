@@ -1,0 +1,19 @@
+<div class="n-back-container">
+  <div class="selection-row">
+    <app-selection-component
+      [terms]="currentPremise.firstSubject"
+      (selectedTermChanged)="selectionChanged($event, 1)"
+    ></app-selection-component>
+    <app-selection-component
+      [terms]="currentPremise.relation"
+      (selectedTermChanged)="selectionChanged($event, 2)"
+    ></app-selection-component>
+    <app-selection-component
+      [terms]="currentPremise.secondSubject"
+      (selectedTermChanged)="selectionChanged($event, 3)"
+    ></app-selection-component>
+  </div>
+  <div class="button-row">
+    <button (click)="validateFillTheBlank()">BRO</button>
+  </div>
+</div>

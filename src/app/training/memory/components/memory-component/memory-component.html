@@ -1,4 +1,13 @@
-<div class="score">{{ rightAnswers + " / " + questions.length }}</div>
+<div class="score">
+  {{
+    rightAnswers +
+      " / " +
+      totalAnswers +
+      " (" +
+      (rightAnswers / totalAnswers) * 100 +
+      "%)"
+  }}
+</div>
 @if(isReadyForNextQuestion){
 <button class="nextQuestion" (click)="nextQuestion()">Next Question</button>
 }

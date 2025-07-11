@@ -6,23 +6,28 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Question } from '../../../syllogimous/models/question.models';
 import { MemorySettingsService } from '../../services/memory-settings.service';
+import { MemoryNBackComponent } from '../memory-nback-component/memory-nback-component';
+import { Question } from '../../../../syllogimous/models/question.models';
 
 @Component({
   selector: 'app-memory-question-component',
   standalone: true,
-  imports: [],
+  imports: [MemoryNBackComponent],
   templateUrl: './memory-question-component.html',
   styleUrl: './memory-question-component.scss',
 })
 export class MemoryQuestionComponent implements OnChanges {
   @Input({ required: true }) question!: Question;
-  @Output() questionAnswered = new EventEmitter<boolean>();
+  @Output() questionAnswered = new EventEmitter<number>();
 
   userAnswer: boolean = false;
   premiseIndex = 0;
   timer: any = null;
+
+  displayFillTheBlank = false;
+  rightNBackAnswers = 0;
+
   displayConclusion = false;
   displayResult = false;
   isResultCorrect = false;
@@ -36,8 +41,15 @@ export class MemoryQuestionComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['question']) {
+      this.initQuestion();
       this.startQuestionTimer();
     }
+  }
+
+  onNBackAnswered(rightAnswers: number) {
+    this.rightNBackAnswers = rightAnswers;
+    this.displayFillTheBlank = false;
+    this.displayConclusion = true;
   }
 
   get currentPremise(): string {
@@ -69,34 +81,45 @@ export class MemoryQuestionComponent implements OnChanges {
   startQuestionTimer() {
     if (this.timer) return;
 
-    this.initQuestion();
+    this.initPremises();
 
     this.timer = setInterval(() => {
-      this.nextStep();
+      this.nextPremises();
     }, this.memorySettingsService.getSettings().premiseDisplayTime * 1000);
   }
 
-  nextStep() {
+  nextPremises() {
     if (++this.premiseIndex >= this.question!.premises.length) {
-      this.displayConclusion = true;
+      this.initFillTheBlank();
       clearInterval(this.timer);
       this.timer = null;
     }
   }
 
-  validateAnswer(answer: boolean) {
+  validateConclusion(answer: boolean) {
     this.userAnswer = answer;
     this.isResultCorrect = this.currentResult;
     this.isResultIncorrect = !this.currentResult;
     this.displayResult = true;
-    this.questionAnswered.emit(this.currentResult);
+    this.questionAnswered.emit(
+      this.currentResult ? this.rightNBackAnswers + 1 : this.rightNBackAnswers
+    );
+  }
+
+  initFillTheBlank() {
+    this.displayFillTheBlank = true;
+    this.rightNBackAnswers = 0;
   }
 
   initQuestion() {
     this.isResultCorrect = false;
     this.isResultIncorrect = false;
+    this.displayFillTheBlank = false;
     this.displayConclusion = false;
     this.displayResult = false;
+  }
+
+  initPremises() {
     this.premiseIndex = 0;
   }
 }
