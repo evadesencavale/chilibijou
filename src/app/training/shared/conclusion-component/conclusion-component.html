@@ -1,0 +1,9 @@
+@if(displayInstructions) {
+<div>{{ currentQuestionType }}</div>
+<div [innerHtml]="currentInstruction"></div>
+}
+<div [innerHtml]="currentConclusion"></div>
+<div class="button-row">
+  <button (click)="validateConclusion(true)">TRUE</button>
+  <button (click)="validateConclusion(false)">FALSE</button>
+</div>

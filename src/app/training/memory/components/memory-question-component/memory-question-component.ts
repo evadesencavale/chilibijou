@@ -9,11 +9,13 @@ import {
 import { MemorySettingsService } from '../../services/memory-settings.service';
 import { MemoryNBackComponent } from '../memory-nback-component/memory-nback-component';
 import { Question } from '../../../../syllogimous/models/question.models';
+import { ConclusionComponent } from '../../../shared/conclusion-component/conclusion-component';
+import { PremiseComponent } from '../../../shared/premise-component/premise-component';
 
 @Component({
   selector: 'app-memory-question-component',
   standalone: true,
-  imports: [MemoryNBackComponent],
+  imports: [MemoryNBackComponent, ConclusionComponent, PremiseComponent],
   templateUrl: './memory-question-component.html',
   styleUrl: './memory-question-component.scss',
 })
@@ -21,7 +23,6 @@ export class MemoryQuestionComponent implements OnChanges {
   @Input({ required: true }) question!: Question;
   @Output() questionAnswered = new EventEmitter<number>();
 
-  userAnswer: boolean = false;
   premiseIndex = 0;
   timer: any = null;
 
@@ -67,17 +68,6 @@ export class MemoryQuestionComponent implements OnChanges {
     return this.question?.instructions ?? '';
   }
 
-  get currentConclusion(): string {
-    if (Array.isArray(this.question?.conclusion)) {
-      return this.question.conclusion.join('\n');
-    }
-    return this.question?.conclusion ?? '';
-  }
-
-  get currentResult(): boolean {
-    return this.userAnswer === this.question?.isValid;
-  }
-
   startQuestionTimer() {
     if (this.timer) return;
 
@@ -96,16 +86,6 @@ export class MemoryQuestionComponent implements OnChanges {
     }
   }
 
-  validateConclusion(answer: boolean) {
-    this.userAnswer = answer;
-    this.isResultCorrect = this.currentResult;
-    this.isResultIncorrect = !this.currentResult;
-    this.displayResult = true;
-    this.questionAnswered.emit(
-      this.currentResult ? this.rightNBackAnswers + 1 : this.rightNBackAnswers
-    );
-  }
-
   initFillTheBlank() {
     this.displayFillTheBlank = true;
     this.rightNBackAnswers = 0;
@@ -121,5 +101,14 @@ export class MemoryQuestionComponent implements OnChanges {
 
   initPremises() {
     this.premiseIndex = 0;
+  }
+
+  onQuestionAnswered(result: boolean) {
+    this.isResultCorrect = result;
+    this.isResultIncorrect = !result;
+    this.displayResult = true;
+    this.questionAnswered.emit(
+      result ? this.rightNBackAnswers + 1 : this.rightNBackAnswers
+    );
   }
 }
