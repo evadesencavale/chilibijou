@@ -12,7 +12,7 @@ export class ConclusionComponent {
   @Input({ required: true }) question!: Question;
   @Input() displayInstructions = false;
   @Output() questionAnswered = new EventEmitter<boolean>();
-  userAnswer: boolean = false;
+  userAnswer: boolean | undefined = false;
 
   get currentResult(): boolean {
     return this.userAnswer === this.question?.isValid;
@@ -36,7 +36,7 @@ export class ConclusionComponent {
     return this.question?.conclusion ?? '';
   }
 
-  validateConclusion(answer: boolean) {
+  validateConclusion(answer?: boolean) {
     this.userAnswer = answer;
     this.questionAnswered.emit(this.currentResult);
   }
