@@ -1,5 +1,5 @@
 {
-  "name": "er-training",
+  "name": "chilibijou",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "github-build": "ng build --configuration production --base-href /er-training/",
-    "github-push": "npx angular-cli-ghpages --dir=dist/er-training/browser"
+    "github-build": "ng build --configuration production --base-href /chilibijou/",
+    "github-push": "npx angular-cli-ghpages --dir=dist/chilibijou/browser"
   },
   "prettier": {
     "overrides": [

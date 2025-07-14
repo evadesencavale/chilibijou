@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "er-training": {
+    "chilibijou": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/er-training",
+            "outputPath": "dist/chilibijou",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "er-training:build:production"
+              "buildTarget": "chilibijou:build:production"
             },
             "development": {
-              "buildTarget": "er-training:build:development"
+              "buildTarget": "chilibijou:build:development"
             }
           },
           "defaultConfiguration": "development"
