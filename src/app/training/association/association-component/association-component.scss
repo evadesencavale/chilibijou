@@ -1,0 +1,61 @@
+.score {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2rem;
+  z-index: 10;
+}
+
+.nextQuestion {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2rem;
+  z-index: 10;
+}
+
+:host {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  padding: 10px;
+  background-color: lightgray;
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+}
+
+.premises {
+  border: 2px solid black;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem; /* space between children */
+  transition: background-color 0.3s;
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+}
+
+.card {
+  border: 2px solid black;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.conclusions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem; /* space between children */
+  transition: background-color 0.3s;
+}
+
+:host > div {
+  margin-bottom: 1rem;
+}

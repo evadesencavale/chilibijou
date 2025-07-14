@@ -1,0 +1,19 @@
+<div class="selection-container" (mouseleave)="showList = false">
+  <div
+    class="selected-term"
+    [class.editable]="!readOnly"
+    (mouseover)="showList = true"
+    [innerHTML]="terms[selectedIndex]"
+  ></div>
+  @if(!readOnly && showList) {
+  <ul class="term-list">
+    @for(term of terms; track $index) {
+    <li
+      [class.selected]="term === terms[selectedIndex]"
+      (click)="selectTerm($index)"
+      [innerHTML]="term"
+    ></li>
+    }
+  </ul>
+  }
+</div>

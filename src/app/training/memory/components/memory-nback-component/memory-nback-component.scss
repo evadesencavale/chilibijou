@@ -1,0 +1,35 @@
+.n-back-container {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+  gap: 2rem; /* space between children */
+  background-color: #c5f0f7 !important; /* light red */
+  transition: background-color 0.3s;
+}
+
+.n-back-container > div {
+  margin-bottom: 1rem;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.button-row button {
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem;
+  min-width: 120px;
+  border-radius: 0.5rem;
+}
+
+.selection-row {
+  display: flex;
+  gap: 1rem; /* Optional: adds space between components */
+  align-items: center;
+}

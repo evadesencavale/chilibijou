@@ -1,0 +1,30 @@
+<div class="settings-btn" (click)="showSettings = !showSettings">⚙️</div>
+@if(showSettings){
+<div class="settings-panel">
+  <div>
+    <label>
+      Questions count:
+      <input
+        type="number"
+        [(ngModel)]="associationSettings.questionCount"
+        (ngModelChange)="setQuestionCount($event)"
+        min="1"
+        step="1"
+      />
+    </label>
+  </div>
+  <div>
+    <label>
+      Premises count:
+      <input
+        type="number"
+        [(ngModel)]="associationSettings.premisesCount"
+        (ngModelChange)="setPremisesCount($event)"
+        min="3"
+        step="1"
+      />
+    </label>
+  </div>
+  <button (click)="showSettings = false">Close</button>
+</div>
+}
