@@ -10,10 +10,10 @@ export class MemorySettingsService {
   }
 
   private loadSettings(): MemorySettings {
-    return JSON.parse(localStorage.getItem('settings') || '{}');
+    return JSON.parse(localStorage.getItem('memorySettings') || '{}');
   }
 
   saveSettings(settings: MemorySettings) {
-    localStorage.setItem('settings', JSON.stringify(settings));
+    localStorage.setItem('memorySettings', JSON.stringify(settings));
   }
 }

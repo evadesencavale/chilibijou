@@ -62,6 +62,7 @@ export class SyllogimousService {
         questionType != EnumQuestionType.Analogy &&
         questionType != EnumQuestionType.Syllogism &&
         questionType != EnumQuestionType.Binary &&
+        questionType != EnumQuestionType.Direction &&
         questionType != EnumQuestionType.Direction3DSpatial &&
         questionType != EnumQuestionType.Direction3DTemporal;
       const numOfPremises = 2;

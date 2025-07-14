@@ -7,7 +7,7 @@
   <div>{{ currentQuestionType }}</div>
   <div [innerHtml]="currentInstruction"></div>
   } @if(!displayFillTheBlank && !displayConclusion && !displayResult) {
-  <div [innerHtml]="currentPremise"></div>
+  <app-premise-component [premise]="currentPremise"></app-premise-component>
   } @if(displayFillTheBlank && !displayConclusion && !displayResult) {
   <div>
     <app-memory-nback-component
@@ -16,12 +16,11 @@
     ></app-memory-nback-component>
   </div>
   } @if(displayConclusion && !displayFillTheBlank && !displayResult) {
-  <div [innerHtml]="currentConclusion"></div>
-  <div class="button-row">
-    <button (click)="validateConclusion(true)">TRUE</button>
-    <button (click)="validateConclusion(false)">FALSE</button>
-  </div>
+  <app-conclusion-component
+    [question]="question"
+    (questionAnswered)="onQuestionAnswered($event)"
+  ></app-conclusion-component>
   } @if(displayResult) {
-  <div>{{ currentResult ? "Great Success!" : "Shame & Regrets" }}</div>
+  <div>{{ isResultCorrect ? "Great Success!" : "Shame & Regrets" }}</div>
   }
 </div>

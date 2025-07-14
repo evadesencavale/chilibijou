@@ -1,0 +1,33 @@
+<div class="score">
+  {{
+    rightAnswers +
+      " / " +
+      totalAnswers +
+      " (" +
+      (rightAnswers / totalAnswers) * 100 +
+      "%)"
+  }}
+</div>
+<app-association-settings-component></app-association-settings-component>
+@if(isReadyForNextQuestion){
+<button class="nextQuestion" (click)="nextQuestions()">Next Questions</button>
+} @else {
+<div class="premises">
+  @for(premise of randomizedPremises; track $index) {
+  <app-premise-component
+    class="card"
+    [premise]="premise"
+  ></app-premise-component>
+  }
+</div>
+<div class="conclusions">
+  @for(question of questions; track $index) {
+  <app-conclusion-component
+    class="card"
+    [displayInstructions]="true"
+    [question]="question"
+    (questionAnswered)="onQuestionAnswered($event, $index)"
+  ></app-conclusion-component>
+  }
+</div>
+}
