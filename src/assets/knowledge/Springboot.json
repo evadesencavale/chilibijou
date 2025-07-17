@@ -1,0 +1,8 @@
+ {
+    "@ParametrizedTest": {
+        "Can automatically passes value, empty and null.": {},
+        "Can automatically passes CSV (value, result pair).": {},
+        "Can automatically passes Enum values.": {},
+        "Can use a method to passe values.": {}
+    }
+}

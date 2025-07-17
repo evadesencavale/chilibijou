@@ -1,0 +1,6 @@
+{
+    "@Injectable": {
+        "Permet de spécifier qu'une classe est injectable dans une autre (exemple, un service).": {},
+        "Argument: providedIn permet de spécifier si c'est disponible partout (root) ou juste des components spécifiques.":{}
+    }
+}
