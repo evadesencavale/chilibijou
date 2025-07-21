@@ -9,6 +9,7 @@ export class KnowledgeService {
   private static KNOWLEDGE_FILES = [
     'Angular.json',
     'DDD.json',
+    'Patterns.json',
     'Springboot.json',
   ];
 

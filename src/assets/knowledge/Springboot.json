@@ -4,5 +4,8 @@
         "Can automatically passes CSV (value, result pair).": {},
         "Can automatically passes Enum values.": {},
         "Can use a method to passe values.": {}
+    },
+    "@PostConstruct": {
+        "Permet de rouler du code dans une classe avant sa première utilisation.": {}
     }
 }
