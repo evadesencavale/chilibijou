@@ -1,0 +1,8 @@
+{
+    "Command Query Responsability Segregation (CQRS)": {
+        "Les commandes (udpdate) retournent void.": {},
+        "Les queries (read) retournent des valeurs.":{},
+        "On veut séparer les commands/queries afin de pouvoir les optimiser (@Transactional).":{},
+        "Separation of Concerns.":{}
+    }
+}

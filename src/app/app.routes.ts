@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { ErChampData } from './er-champ-data/er-champ-data';
 import { MemoryComponent } from './training/memory/components/memory-component/memory-component';
-import { AssociationComponent } from './training/association/association-component/association-component';
+import { KnowledgeMemoryComponent } from './knowledge/memory/components/knowledge-memory-component/knowledge-memory-component';
+import { AssociationComponent } from './training/association/components/association-component/association-component';
+import { KnowledgeViewPageComponent } from './knowledge/components/knowledge-view-page-component/knowledge-view-page-component';
 
 export const routes: Routes = [
   {
@@ -13,6 +15,16 @@ export const routes: Routes = [
     path: 'association',
     title: 'Association Training',
     component: AssociationComponent,
+  },
+  {
+    path: 'knowledge',
+    title: 'Knowledge',
+    component: KnowledgeViewPageComponent,
+  },
+  {
+    path: 'knowledge-memory',
+    title: 'Knowledge Memory',
+    component: KnowledgeMemoryComponent,
   },
   {
     path: 'erchampdata',

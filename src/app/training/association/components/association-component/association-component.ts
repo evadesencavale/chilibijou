@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Question } from '../../../syllogimous/models/question.models';
-import { SyllogimousService } from '../../../syllogimous/services/syllogimous.service';
-import { AssociationSettingsService } from '../services/association-settings.service';
-import { AssociationSettingsComponent } from '../components/association-settings-component/association-settings-component';
-import { PremiseComponent } from '../../shared/premise-component/premise-component';
-import { ConclusionComponent } from '../../shared/conclusion-component/conclusion-component';
+import { Question } from '../../../../syllogimous/models/question.models';
+import { SyllogimousService } from '../../../../syllogimous/services/syllogimous.service';
+import { ConclusionComponent } from '../../../shared/conclusion-component/conclusion-component';
+import { PremiseComponent } from '../../../shared/premise-component/premise-component';
+import { AssociationSettingsService } from '../../services/association-settings.service';
+import { AssociationSettingsComponent } from '../association-settings-component/association-settings-component';
 
 @Component({
   selector: 'app-association-component',
@@ -51,7 +51,7 @@ export class AssociationComponent {
 
     this.randomizedPremises = [];
     const allPremises = this.questions.flatMap((q) =>
-      q.premises.flatMap((p) => p)
+      q.premises.flatMap((p: any) => p)
     );
 
     while (allPremises.length > 0) {

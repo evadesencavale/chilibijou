@@ -1,0 +1,11 @@
+@for(knowledge of allKnowledge; track knowledge.getId()) {
+<div
+  [innerHTML]="
+    knowledge.getCategory() +
+    ' / ' +
+    knowledge.getId() +
+    ' / ' +
+    knowledge.getInformation()
+  "
+></div>
+}
