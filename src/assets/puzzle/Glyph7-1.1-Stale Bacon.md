@@ -1,62 +1,55 @@
 ```mermaid
 ---
 config:
-  title: Stale Bacon
   look: handDrawn
 ---
 flowchart TD
-    StaleBacon[Text: Stale Bacon] --> |Extract| Stale
-    StaleBacon --> |Extract| Bacon
+  INFO[<u>Stale Bacon</u>
+    Type: Puzzle Hunt
+    Date: 2025-07-18
+    Avec: Gui, David]
+  click INFO href "https://g7.glyph.wtf/hunt/ep/1/pz/2/" "Stale Bacon"
+  DIFF[Difficultés:
+    -
+  ]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  TITLE[Text: Stale Bacon]
+  style TITLE stroke:yellow
+  IMG1[Image]
+  style IMG1 stroke:yellow
 
-    IMG1[IMAGE] --> |Extract| Pigpen
-    IMG1[IMAGE] --> |Extract| TTT[Tic Tac Toe]
+  STALE[Stale]
+  style STALE stroke:red
+  BACON[Bacon]
+  style BACON stroke:red
+  TTT[Tic Tac Toe]
+  style TTT stroke:red
 
-    Stale --> |Association par meaning| P1(Process)
-    TTT --> |Association par meaning| P1(Process)
+  IMG1 --> |Image| TTT
+  TITLE --> |Meaning| BACON
+  TITLE --> |Meaning| STALE
 
-    Bacon --> Pigpen
+  TTTS[5 TTT staled grid]
+  style TTTS stroke:blue
 
-    P1(Process) --> TTTR[5 TTT staled grids]
+  STALE --> |Meaning| TTTS
+  TTT --> |Meaning| TTTS
 
-    TTTR --> |Déduction par process| D1(Deduce)
+  PIGPEN[Pigpen]
+  style PIGPEN stroke:red
 
-    D1 --> TTTP[5 last positions]
+  BACON --> |Meaning| PIGPEN
+  IMG1 --> |Meaning| PIGPEN
 
-    TTT --> |Association par forme| P2(Process)
-    TTTP --> |Association par process| P2
-    Pigpen --> |Association par forme| P2
+  LTTTP[5 last positions played]
+  style LTTTP stroke:red
 
-    P2 --> Answer
+  TTTS --> |Deduced by Process| LTTTP
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  TTT --> |Shape| Answer
+  PIGPEN --> |Shape| Answer
+  LTTTP --> |Meaning| Answer
 
-    TITLE[<u>Stale Bacon</u>
-        Type: Puzzle Hunt
-        Date: 2025-07-18
-        Avec: Gui, David
-        ]
-
-    click TITLE href "https://g7.glyph.wtf/hunt/ep/1/pz/2/" "Stale Bacon"
-    DIFF[Difficultés:
-    - ]
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    classDef startingInfo stroke:yellow
-    class StaleBacon,IMG1 startingInfo
-
-    classDef meaningExtraction stroke:red
-    class Bacon,Stale,TTT,Pigpen meaningExtraction
-
-    classDef process stroke:blue
-    class P1,P2 process
-
-    classDef deduction stroke:orange
-    class D1 deduction
-
-    classDef answer stroke: green
-    class Answer answer
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  Answer
+  style Answer stroke:green
 ```
