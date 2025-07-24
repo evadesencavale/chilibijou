@@ -10,7 +10,8 @@ flowchart TD
     Avec: Gui]
   click INFO href "https://g1.glyph.wtf/hunt/ep/1/pz/4/" "Snowflakes"
   DIFF[Difficultés:
-    -
+    - Hidden Shape
+    - Association par position
   ]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
