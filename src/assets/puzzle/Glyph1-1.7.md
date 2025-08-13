@@ -27,15 +27,15 @@ flowchart TD
     TEXT --> |Meaning| ISBN
 
     NT[Novel Titles]
-    style NT stroke:red
+    style NT stroke:blue
 
     ISBN --> |Conversion| NT
 
     WORDS[8 Words]
     style WORDS stroke:blue
 
-    NO --> |Process| WORDS
-    NT --> |Process| WORDS
+    NO --> |Conversion| WORDS
+    NT --> |Meaning| WORDS
 
     RN[Roman Numerals in words]
     style RN stroke:purple
@@ -46,8 +46,8 @@ flowchart TD
 
     RN --> |Meaning| NUMB
 
-    NUMB --> |Process| Answer
-    NOVEL --> |Meaning| Answer
+    NUMB --> |Conversion| Answer
+    NT --> |Process| Answer
 
     Answer
     style Answer stroke:green
@@ -61,7 +61,7 @@ flowchart TD
     Avec: Gui]
   click INFO href "https://g1.glyph.wtf/hunt/ep/1/pz/7/" "A Novel Idea"
   DIFF[Difficultés:
-    -
+    - Redo the process
   ]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ```
