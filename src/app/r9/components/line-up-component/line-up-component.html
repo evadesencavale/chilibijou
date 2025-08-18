@@ -1,0 +1,120 @@
+<div class="grid">
+  <div class="dropdown-wrap">
+    <select
+      #m1="ngModel"
+      [(ngModel)]="currentLineUp.b1L"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m1)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m2="ngModel"
+      [(ngModel)]="currentLineUp.b2L"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m2)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m3="ngModel"
+      [(ngModel)]="currentLineUp.b3L"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m3)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m4="ngModel"
+      [(ngModel)]="currentLineUp.b4L"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m4)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+  </div>
+
+  <div class="dropdown-wrap">
+    <select
+      #m5="ngModel"
+      [(ngModel)]="currentLineUp.b1R"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m5)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m6="ngModel"
+      [(ngModel)]="currentLineUp.b2R"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m6)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m7="ngModel"
+      [(ngModel)]="currentLineUp.b3R"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m7)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+    <select
+      #m8="ngModel"
+      [(ngModel)]="currentLineUp.b4R"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m8)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+  </div>
+
+  <div class="dropdown-wrap">
+    <button (click)="switch(1)">Switch</button>
+    <button (click)="switch(2)">Switch</button>
+    <button (click)="switch(3)">Switch</button>
+    <button (click)="switch(4)">Switch</button>
+  </div>
+
+  <!-- 1 dropdown under -->
+  <div class="dropdown-wrap full">
+    <select
+      #m9="ngModel"
+      [(ngModel)]="currentLineUp.b5"
+      (ngModelChange)="updateTotal()"
+      (keydown)="onDropdownKeydown($event, m9)"
+    >
+      <option *ngFor="let item of paddlers" [ngValue]="item">
+        {{ item.name + " (" + item.weigth + ")" }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Row with 3 displayed texts -->
+  <div class="three-texts">
+    <div>{{ leftTotal | number : "1.0-0" }}</div>
+    <div>{{ diff | number : "1.0-0" }}</div>
+    <div>{{ rightTotal | number : "1.0-0" }}</div>
+  </div>
+
+  <!-- Centered displayed text under -->
+  <div class="center-text">
+    {{ total | number : "1.0-0" }}
+  </div>
+</div>

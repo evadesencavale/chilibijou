@@ -1,0 +1,12 @@
+<div class="settings-btn" (click)="showSettings = !showSettings">⚙️</div>
+@if(showSettings){
+<div class="settings-panel">
+  <div>
+    <label>
+      Nothing:
+      <input type="number" (ngModelChange)="setNothing()" min="1" step="1" />
+    </label>
+  </div>
+  <button (click)="showSettings = false">Close</button>
+</div>
+}

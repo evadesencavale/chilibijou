@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: 50%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.dropdown-wrap,
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+select,
+button,
+input[type="text"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.three-texts {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.center-text {
+  grid-column: span 2;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}

@@ -4,6 +4,7 @@ import { MemoryComponent } from './training/memory/components/memory-component/m
 import { KnowledgeMemoryComponent } from './knowledge/memory/components/knowledge-memory-component/knowledge-memory-component';
 import { AssociationComponent } from './training/association/components/association-component/association-component';
 import { KnowledgeViewPageComponent } from './knowledge/components/knowledge-view-page-component/knowledge-view-page-component';
+import { RaceComponent } from './r9/components/race-component/race-component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,11 @@ export const routes: Routes = [
     path: 'erchampdata',
     title: 'ER Champ 2025 Data',
     component: ErChampData,
+  },
+  {
+    path: 'r9',
+    title: 'Line-ups',
+    component: RaceComponent,
   },
   {
     path: '**',

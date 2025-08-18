@@ -13,7 +13,6 @@ export class KnowledgeViewPageComponent {
   allKnowledge: Knowledge[];
 
   constructor(private knowledgeService: KnowledgeService) {
-    console.log('BRUGH');
     this.allKnowledge = this.knowledgeService.getKnowledge();
   }
 }
