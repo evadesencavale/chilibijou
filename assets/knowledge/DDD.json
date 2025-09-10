@@ -1,0 +1,13 @@
+{
+    "DTOs vs Entities": {
+        "Dtos hides entity domain implementation from the user.": {},
+        "Separation of concerns.": {},
+        "Dtos should not contain Entities or VOs (except for small VOs).": {},
+        "Dtos should have the smallest possible interface.": {}
+    },
+    "Services vs Domain Services": {
+        "A service method is an entry point to our app that should be call from outside.": {},
+        "A service method is an E2E use case that should not be called from within our app.": {},
+        "If we need to call a service method from inside our app, we must refactor:\n<ul>\n<li>Move logic to the aggregate.</li>\n<li>Move logic to the repositroy.</li>\n<li>Move logic to a Domain Service which will contain reusable logic.</li>\n</ul>": {}
+    }
+}
