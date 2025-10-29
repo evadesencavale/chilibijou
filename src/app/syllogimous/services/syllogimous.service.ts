@@ -134,7 +134,7 @@ export class SyllogimousService {
       getQuestionGroup(undefined),
       getQuestionGroup(EnumQuestionGroup.Comparison),
       getQuestionGroup(EnumQuestionGroup.Direction),
-      getQuestionGroup(EnumQuestionGroup.Arrangement),
+      //getQuestionGroup(EnumQuestionGroup.Arrangement),
     ];
 
     const choices: Array<() => Question> = [];
