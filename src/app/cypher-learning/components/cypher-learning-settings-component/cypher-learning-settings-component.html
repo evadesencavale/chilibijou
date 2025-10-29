@@ -1,0 +1,28 @@
+<div class="settings-btn" (click)="showSettings = !showSettings">⚙️</div>
+@if(showSettings){
+<div class="settings-panel">
+  <div>
+    <label>
+      Audio Delay (s):
+      <input
+        type="number"
+        [(ngModel)]="cypherLearningSettings.audioDelay"
+        (ngModelChange)="setAudioDelay($event)"
+        min="1"
+        step="1"
+      />
+    </label>
+  </div>
+  <div>
+    <label>
+      Use A1Z26:
+      <input
+        type="boolean"
+        [(ngModel)]="cypherLearningSettings.a1z26"
+        (ngModelChange)="setA1Z26($event)"
+      />
+    </label>
+  </div>
+  <button (click)="showSettings = false">Close</button>
+</div>
+}

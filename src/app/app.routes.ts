@@ -4,8 +4,14 @@ import { MemoryComponent } from './training/memory/components/memory-component/m
 import { KnowledgeMemoryComponent } from './knowledge/memory/components/knowledge-memory-component/knowledge-memory-component';
 import { AssociationComponent } from './training/association/components/association-component/association-component';
 import { KnowledgeViewPageComponent } from './knowledge/components/knowledge-view-page-component/knowledge-view-page-component';
+import { CypherLearningComponent } from './cypher-learning/components/cypher-learning-component/cypher-learning-component';
 
 export const routes: Routes = [
+  {
+    path: 'cypher',
+    title: 'Cypher Learning',
+    component: CypherLearningComponent,    
+  },
   {
     path: 'memory',
     title: 'Memory Training',
