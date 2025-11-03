@@ -17,12 +17,32 @@
     <label>
       Use A1Z26:
       <input
-        type="boolean"
+        type="checkbox"
         [(ngModel)]="cypherLearningSettings.a1z26"
         (ngModelChange)="setA1Z26($event)"
       />
     </label>
   </div>
+<div>
+    <label>
+      Use NATO:
+      <input
+        type="checkbox"
+        [(ngModel)]="cypherLearningSettings.nato"
+        (ngModelChange)="setNato($event)"
+      />
+    </label>
+  </div>  
+<div>
+    <label>
+      Use Morse:
+      <input
+        type="checkbox"
+        [(ngModel)]="cypherLearningSettings.morse"
+        (ngModelChange)="setMorse($event)"
+      />
+    </label>
+  </div>    
   <button (click)="showSettings = false">Close</button>
 </div>
 }

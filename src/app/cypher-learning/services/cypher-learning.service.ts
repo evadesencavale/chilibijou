@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CypherLearningSettings } from '../models/settings';
+import { CypherLearningSettings } from '../models/cypher-learning-settings';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,8 @@ export class CypherLearningSettingsService {
   }
 
   private loadSettings(): CypherLearningSettings {
-    return JSON.parse(localStorage.getItem('cypherLearningSettings') || '{}');
+    const raw = JSON.parse(localStorage.getItem('cypherLearningSettings') || '{}');
+    return Object.assign(new CypherLearningSettings(), raw);
   }
 
   saveSettings(settings: CypherLearningSettings) {

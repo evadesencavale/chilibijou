@@ -3,6 +3,8 @@ export class Translation {
 	private _code: string;
 	private _audioLetter: string;
 	private _audioCode: string;  
+	private _letterVolume = 1;  	
+	private _codeVolume = 1;  	
 
 	get letter(): string {
 	  return this._letter;
@@ -20,10 +22,19 @@ export class Translation {
 	  return this._audioCode;
 	}  
 
-	constructor(letter: string, code: string, audioLetter: string, audioCode: string) {
+	get letterVolume(): number {
+	  return this._letterVolume;
+	}  
+		
+	get codeVolume(): number {
+	  return this._codeVolume;
+	}  	
+
+	constructor(letter: string, code: string, audioLetter: string, audioCode: string, codeVolume = 1) {
     this._letter = letter;
     this._code = code;
     this._audioLetter = audioLetter;
-    this._audioCode = audioCode
+    this._audioCode = audioCode;
+	this._codeVolume = codeVolume;
 	}
 }

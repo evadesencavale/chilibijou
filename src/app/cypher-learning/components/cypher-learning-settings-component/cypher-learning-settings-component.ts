@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CypherLearningSettings } from '../../models/settings';
+import { CypherLearningSettings } from '../../models/cypher-learning-settings';
 import { CypherLearningSettingsService } from '../../services/cypher-learning.service';
 import { FormsModule } from '@angular/forms';
 
@@ -33,4 +33,18 @@ export class CypherLearningSettingsComponent {
       this.cypherLearningSettings
     );
   }
+
+  setNato(value: boolean) {
+    this.cypherLearningSettings.nato = value;
+    this.cypherLearningSettingsService.saveSettings(
+      this.cypherLearningSettings
+    );
+  }  
+
+  setMorse(value: boolean) {
+    this.cypherLearningSettings.morse = value;
+    this.cypherLearningSettingsService.saveSettings(
+      this.cypherLearningSettings
+    );
+  }    
 }
